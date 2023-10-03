@@ -23,7 +23,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
 //                아래 url 허용 : local, aws cloud
-                .allowedOrigins("http://localhost:3000","http://13.209.88.243:3000")
+                .allowedOrigins("http://localhost:3000","http://54.180.82.181:3000")
 //                Todo: 아래 추가해야 update, delete, insert, select 가 cors 문제가 안생김
                 .allowedMethods(
                         HttpMethod.GET.name(),
