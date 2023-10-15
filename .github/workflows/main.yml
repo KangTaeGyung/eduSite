@@ -39,6 +39,6 @@ jobs:
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
         --application-name simple-coding-edu-archive
-        --deployment-config-name CodeDeployDefault.OneAtATime
+        --deployment-config-name CodeDeployDefault.AllAtOnce
         --deployment-group-name simple-coding-edu-archive-group
         --s3-location bucket=simple-coding-edu,bundleType=tgz,key=archive/drcloud.tar.gz
