@@ -45,6 +45,7 @@ CREATE TABLE TB_CODE
 
 
 -- todo: TB_REPLY_QNA : 질문 답변형 게시판
+-- todo: fileName 추가
 CREATE TABLE TB_REPLY_QNA
 (
     BID           NUMBER NOT NULL              -- 게시판번호
@@ -57,6 +58,7 @@ CREATE TABLE TB_REPLY_QNA
     BOARD_PARENT  NUMBER,                      -- 자신의 부모 노드 ( 부모가 있을 경우 : 부모번호, 없을 경우 : 0 )
     UUID          VARCHAR2(1000)  NOT NULL,    -- file 첨부시 사용할 유일한 id : uuid
     FILE_URL      VARCHAR2(1000),              -- 파일 다운로드 URL
+    FILE_NAME     VARCHAR2(1000),              -- 업로드 할때의 파일명 (업로드 후 내부적으로 변경된 uuid 이름으로 파일명이 재작성됨)
     DELETE_YN     VARCHAR2(1) DEFAULT 'N',
     INSERT_TIME   VARCHAR2(255),
     UPDATE_TIME   VARCHAR2(255),

@@ -69,4 +69,6 @@ public class ReplyQna extends BaseTimeEntity {
     private String uuid;   // 첨부파일 이름 생성용 uuid
 
     private String fileUrl; // 첨부파일 url : s3 다운로드 주소
+
+    private String fileName; // 첨부파일 파일명(업로드 할때의 파일명)
 }

@@ -89,14 +89,14 @@ public class ReplyQnaService {
             //        기본키가 없으면 insert
             if (replyQna.getBid() == null) {
 
-                // todo: s3 에 insert 하는 함수 호출 : 리턴값 : 다운로드 url
+                // todo: s3 에 insert 하는 함수 호출
                 setInsertObject(replyQna, multipartFile);
 
 //               db 에 s3 url 주소 insert
                 replyQna2 = replyQnaRepository.save(replyQna);
             } else {
 //        기본키가 있으면 update
-                // todo: s3 에 insert 하는 함수 호출 : 리턴값 : 다운로드 url
+                // todo: s3 에 insert 하는 함수 호출
                 setUpdateObject(replyQna, multipartFile);
 
                 //               db 에 s3 url 주소 update
@@ -184,7 +184,7 @@ public class ReplyQnaService {
             //        기본키가 없으면 insert
             if (replyQna.getBid() == null) {
 
-                // todo: s3 에 insert 하는 함수 호출 : 리턴값 : 다운로드 url
+                // todo: s3 에 insert 하는 함수 호출
                 setInsertObject(replyQna, multipartFile);
 
 //               db 에 s3 url 주소 insert
@@ -192,7 +192,7 @@ public class ReplyQnaService {
             } else {
 //        기본키가 있으면 update
 
-                // todo: s3 에 insert 하는 함수 호출 : 리턴값 : 다운로드 url
+                // todo: s3 에 insert 하는 함수 호출
                 setUpdateObject(replyQna, multipartFile);
                 //               db 에 s3 url 주소 update
                 insertCount = replyQnaRepository.insertByQna(replyQna);
@@ -213,7 +213,8 @@ public class ReplyQnaService {
      */
     public void setInsertObject(ReplyQna replyQna, MultipartFile multipartFile) throws IOException {
         //        S3에 저장되는 파일의 이름이 중복되지 않기 위해서 UUID로 생성한 랜덤 값과 파일 이름을 연결하여 S3에 업로드
-        String uuid = UUID.randomUUID().toString();
+//        zip 압축 파일만 업로드됨
+        String uuid = UUID.randomUUID().toString() + ".zip";
         String fileDownloadUri = "";
 
         if (multipartFile != null) {
@@ -226,6 +227,9 @@ public class ReplyQnaService {
 
 //      return : file 다운로드 url : aws s3 주소임
             fileDownloadUri = amazonS3.getUrl(bucket, uuid).toString();
+
+//          업로드될 최초 파일명을 저장 : 나중에 uuid 파일명으로 변경됨
+            replyQna.setFileName(multipartFile.getOriginalFilename());
         }
 
         //              새로운 uuid 추가, fileDownload url 추가
@@ -247,7 +251,7 @@ public class ReplyQnaService {
         String fileDownloadUri = "";
 
         //                TODO: s3 에는 수정이 없으므로 파일 업로드후 기존 파일 삭제를 함
-        //  1) 기존 파일 삭제
+        //  1) 기존 파일 삭제 : 있던 없던 삭제 시도 함 ( 없어도 성공메세지 호출 )
         amazonS3.deleteObject(bucket, replyQna.getUuid());
 
         if (multipartFile != null) {
@@ -263,9 +267,12 @@ public class ReplyQnaService {
 //                file 다운로드 url : aws s3 주소임
             fileDownloadUri = amazonS3.getUrl(bucket, replyQna.getUuid()).toString();
 
-            //        fileDownload url 추가
-            replyQna.setFileUrl(fileDownloadUri);
+            //          업로드될 최초 파일명을 저장 : 나중에 uuid 파일명으로 변경됨
+            replyQna.setFileName(multipartFile.getOriginalFilename());
         }
+
+        //        fileDownload url 추가
+        replyQna.setFileUrl(fileDownloadUri);
     }
 
     /**

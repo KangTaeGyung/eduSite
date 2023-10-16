@@ -26,6 +26,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 public interface ReplyQnaRepository extends JpaRepository<ReplyQna, Integer> {
+
+    //    전체 조회 : 계층형 쿼리
+//     * todo: fileName 추가
     @Query(value = "SELECT BID                     AS bid " +
             "      , LPAD('⤵', (LEVEL-1))|| BOARD_TITLE AS BoardTitle " +
             "      , BOARD_CONTENT          AS boardContent " +
@@ -35,6 +38,7 @@ public interface ReplyQnaRepository extends JpaRepository<ReplyQna, Integer> {
             "    ,BOARD_PARENT              AS boardParent " +
             "    ,UUID                      AS uuid " +
             "    ,FILE_URL                  AS fileUrl " +
+            "    ,FILE_NAME                 AS fileName " +
             "FROM TB_REPLY_QNA " +
             "WHERE BOARD_TITLE LIKE %:boardTitle% " +
             "AND   DELETE_YN = 'N' " +
@@ -54,6 +58,7 @@ public interface ReplyQnaRepository extends JpaRepository<ReplyQna, Integer> {
     );
 
     //    insert 쿼리 : 게시물 최초 생성
+//     * todo: fileName 추가
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO TB_REPLY_QNA " +
@@ -66,6 +71,7 @@ public interface ReplyQnaRepository extends JpaRepository<ReplyQna, Integer> {
             "0, " +
             ":#{#replyQna.uuid}, " +
             ":#{#replyQna.fileUrl}," +
+            ":#{#replyQna.fileName}," +
             "'N', " +
             "TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')," +
             "NULL, " +

@@ -38,4 +38,7 @@ public interface ReplyQnaDto {
     public String getUuid();
 
     public String getFileUrl();
+
+//     * todo: fileName 추가
+    public String getFileName();
 }
