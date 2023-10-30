@@ -65,6 +65,6 @@ public class Course extends BaseTimeEntity {
     //    교육 Type : HTML, CSS, JAVASCRIPT, JAVA, SPRINGBOOT, ANDROID
 //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
-    @JoinColumn(name = "CODE")
+    @JoinColumn(name = "CODE_ID")
     private Code code;
 }
