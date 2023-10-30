@@ -28,24 +28,7 @@ public class CodeService {
     @Autowired
     CodeRepository codeRepository;
 
-    public boolean createCode(Code code) {
-
-        //            id 중복 체크
-        if( code.getCodeId() != null) {
-            boolean bResult = codeRepository.existsById(code.getCodeId());
-
-//            id 중복 체크
-            if(bResult) return false;
-
-        }
-
-//        생성 날짜 지정을 위한 날짜 라이브러리 가져오기
-        LocalDateTime localDateTime = LocalDateTime.now();
-//            시간 형태 지정 : 예) 2022-07-28 15:02:45
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-//        생성 날짜 지정
-        code.setInsertTime(localDateTime.format(formatter));
+    public boolean save(Code code) {
 
         codeRepository.save(code);
 
@@ -54,7 +37,7 @@ public class CodeService {
 
     public Page<Code> findAllTitleDesc(String title, Pageable pageable) {
 
-        Page<Code> codePage = codeRepository.findAllByTitleContainingOrderByInsertTimeDesc(title, pageable);
+        Page<Code> codePage = codeRepository.findAllByTitleContaining(title, pageable);
         return codePage;
     }
 
@@ -62,15 +45,5 @@ public class CodeService {
 
         List<Code> codeList = codeRepository.findAll();
         return codeList;
-    }
-
-    //    삭제 시 실행될 메소드
-    public boolean removeById(String codeId) {
-
-        if (codeRepository.existsById(codeId)) {
-            codeRepository.deleteById(codeId);
-            return true;
-        }
-        return false;
     }
 }

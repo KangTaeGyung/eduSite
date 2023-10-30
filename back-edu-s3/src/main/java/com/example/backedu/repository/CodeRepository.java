@@ -19,5 +19,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CodeRepository extends JpaRepository<Code, String> {
-    public Page<Code> findAllByTitleContainingOrderByInsertTimeDesc(String title, Pageable pageable);
+    public Page<Code> findAllByTitleContaining(String title, Pageable pageable);
 }

@@ -39,7 +39,7 @@ public class CodeController {
         log.info("code {}", code);
 
         try {
-            boolean bResult = codeService.createCode(code);
+            boolean bResult = codeService.save(code);
             if (bResult) {
                 return new ResponseEntity<Object>(HttpStatus.CREATED);
             } else {
@@ -53,7 +53,7 @@ public class CodeController {
     }
 
     @GetMapping("/code")
-    public ResponseEntity<Object> findAllPageDesc(@RequestParam(required = false) String searchKeyword,
+    public ResponseEntity<Object> findAllPageDesc(@RequestParam(defaultValue = "") String searchKeyword,
                                              @RequestParam(defaultValue = "0") int page,
                                              @RequestParam(defaultValue = "3") int size
     ) {
@@ -102,25 +102,6 @@ public class CodeController {
             }
         } catch (Exception e) {
 //            서버 에러
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @DeleteMapping("/code/{codeId}")
-    public ResponseEntity<Object> deleteId(@PathVariable String codeId) {
-
-//        프론트엔드 쪽으로 상태정보를 보내줌
-        try {
-            boolean bSuccess = codeService.removeById(codeId);
-
-            if (bSuccess == true) {
-//                delete 문이 성공했을 경우
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
-//            delete 실패했을 경우( 0건 삭제가 될경우 )
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-//            DB 에러가 날경우
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

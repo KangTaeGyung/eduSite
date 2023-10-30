@@ -28,32 +28,14 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-// soft delete
-@Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql = "UPDATE TB_CODE SET DELETE_YN = 'Y', DELETE_TIME=TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE CODE_ID = ?")
 public class Code {
 //    대/중/소분류 첫글자(L/M/S) + 3자리숫자 : 예) L001, M002
     @Id
-    @Column
     private String codeId;
 
     //    대분류 / 중분류 / 소분류 : LARGE / MIDDLE / SMALL
-    @Column
     private String category;
 
     //    교육 과정 이름
-    @Column
     private String title;
-
-    //    생성일시
-    @Column
-    private String insertTime;
-
-    //    삭제여부
-    @Column
-    private String deleteYn;
-
-    //    삭제일시
-    @Column
-    private String deleteTime;
 }
