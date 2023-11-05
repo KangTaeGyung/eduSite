@@ -12,11 +12,11 @@ cp $PROPERTY_HOME/* .
 cd $DEPLOY_HOME/back-edu-s3
 
 # execute gradle build
-./gradlew bootWar
+#./gradlew war
 
 # rename to War file
 cd $DEPLOY_HOME/back-edu-s3/build/libs
-mv ./back-edu-s3-0.0.1-SNAPSHOT.war ROOT.war
+mv ./back-edu-s3-0.0.1-SNAPSHOT-plain.war ROOT.war
 
 # shutdown tomcat
 # cd $TOMCAT_HOME/bin
