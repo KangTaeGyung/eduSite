@@ -19,7 +19,7 @@ cd $DEPLOY_HOME/back-edu-s3/build/libs
 mv ./back-edu-s3-0.0.1-SNAPSHOT-plain.war ROOT.war
 
 # shutdown tomcat
-# cd $TOMCAT_HOME/bin
+cd $TOMCAT_HOME/bin
  ./shutdown.sh
 
 # clear tomcat_home/webapps
@@ -28,10 +28,10 @@ rm -r ROOT
 rm ROOT.war
 
 # copy tomcat_home/webapps
-cp $DEPLOY_HOME/back-edu-s3/build/libs/ROOT.war .
+cp -f $DEPLOY_HOME/back-edu-s3/build/libs/ROOT.war .
 
 # execute War file : option => -Dspring.profiles.active=prod
-# cd $TOMCAT_HOME/bin
+cd $TOMCAT_HOME/bin
  ./startup.sh
 
 
