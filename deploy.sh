@@ -1,6 +1,7 @@
 ﻿#!/bin/bash
 DEPLOY_HOME=/home/ubuntu/deploy
 PROPERTY_HOME=/home/ubuntu/properties
+TOMCAT_HOME=/opt/apache-tomcat-8.5.78
 
 # move to deploy source directory
 cd $DEPLOY_HOME/back-edu-s3/src/main/resources
@@ -13,11 +14,24 @@ cd $DEPLOY_HOME/back-edu-s3
 # execute gradle build
 ./gradlew bootWar
 
-# move to War file
+# rename to War file
 cd $DEPLOY_HOME/back-edu-s3/build/libs
+mv ./back-edu-s3-0.0.1-SNAPSHOT.war ROOT.war
+
+# shutdown tomcat
+# cd $TOMCAT_HOME/bin
+# ./shutdown.sh
+
+# clear tomcat_home/webapps
+cd $TOMCAT_HOME/webapps
+rm -r ROOT
+rm ROOT.war
+
+# move tomcat_home/webapps
+mv $DEPLOY_HOME/back-edu-s3/build/libs/ROOT.war .
 
 # execute War file : option => -Dspring.profiles.active=prod
-java -jar -Dspring.profiles.active=prod back-edu-s3-0.0.1-SNAPSHOT.war > edusite.log &
-
+# cd $TOMCAT_HOME/bin
+# ./startup.sh
 
 
