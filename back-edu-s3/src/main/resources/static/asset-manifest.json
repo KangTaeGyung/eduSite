@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.777dc99b.css",
-    "main.js": "/static/js/main.afa3f182.js",
+    "main.css": "/static/css/main.63ec0fc7.css",
+    "main.js": "/static/js/main.6998c144.js",
     "static/js/787.de83771c.chunk.js": "/static/js/787.de83771c.chunk.js",
     "static/media/my-photo-2.png": "/static/media/my-photo-2.f637c3b2f784ae83c598.png",
     "static/media/my-photo-3.png": "/static/media/my-photo-3.b2663dc074b388653625.png",
@@ -24,6 +24,7 @@
     "static/media/15_exam_7.png": "/static/media/15_exam_7.d0f692f5a93e13fedafe.png",
     "static/media/07_exam_box_5.png": "/static/media/07_exam_box_5.956d778420ce6afb93c7.png",
     "static/media/11_exam_css_6.png": "/static/media/11_exam_css_6.c50c33ea58af39c50adc.png",
+    "static/media/testimonials-2.jpg": "/static/media/testimonials-2.4b41e5c09698f7f4f9f9.jpg",
     "static/media/18_exam_menu.png": "/static/media/18_exam_menu.94a287c03dbba562b444.png",
     "static/media/10_exam_css_5.png": "/static/media/10_exam_css_5.1ea2d2ed9654b2458354.png",
     "static/media/10_exam_2.png": "/static/media/10_exam_2.558432f3c901087aaa07.png",
@@ -38,24 +39,28 @@
     "static/media/08_exam_box_6.png": "/static/media/08_exam_box_6.a3ecc272d11b54c3ec6a.png",
     "static/media/14_exam_6.png": "/static/media/14_exam_6.3669607405d1ef298ebe.png",
     "static/media/06_exam_menu.png": "/static/media/06_exam_menu.47dce246fc39d38b1a8e.png",
+    "static/media/testimonials-1.jpg": "/static/media/testimonials-1.54f2a70e2804cdf6f09d.jpg",
     "static/media/12_exam_box_color.png": "/static/media/12_exam_box_color.ad250a931d332d9abbd1.png",
     "static/media/06_exam_box_4.png": "/static/media/06_exam_box_4.df372bbd3931dbc37487.png",
     "static/media/03_exam_table_box_1.png": "/static/media/03_exam_table_box_1.99f247d6ea31cc0f8ec6.png",
     "static/media/practice_table.png": "/static/media/practice_table.e21db80bfb3c301457b0.png",
     "static/media/06_exam_css.png": "/static/media/06_exam_css.ea2d3df82416a7e55600.png",
+    "static/media/testimonials-5.jpg": "/static/media/testimonials-5.8732aa377888dc5873fb.jpg",
     "static/media/09_exam_css_4.png": "/static/media/09_exam_css_4.7985272a1b014c24a1a9.png",
+    "static/media/testimonials-4.jpg": "/static/media/testimonials-4.58081dc8c31bc0e1cb6c.jpg",
     "static/media/free-icon-menu.png": "/static/media/free-icon-menu.fd70f5586275f279acbf.png",
     "static/media/13_exam_5.png": "/static/media/13_exam_5.2ce49094a66ff65f2f11.png",
+    "static/media/testimonials-3.jpg": "/static/media/testimonials-3.bec51ce16f238c7ec7b1.jpg",
     "static/media/05_exam_box_3.png": "/static/media/05_exam_box_3.a87460134964e8e85940.png",
     "static/media/20_exam_css_8.png": "/static/media/20_exam_css_8.f8dd8f6fb33ff827f430.png",
     "static/media/practice_list.png": "/static/media/practice_list.a1c798c785733c27a190.png",
     "index.html": "/index.html",
-    "main.777dc99b.css.map": "/static/css/main.777dc99b.css.map",
-    "main.afa3f182.js.map": "/static/js/main.afa3f182.js.map",
+    "main.63ec0fc7.css.map": "/static/css/main.63ec0fc7.css.map",
+    "main.6998c144.js.map": "/static/js/main.6998c144.js.map",
     "787.de83771c.chunk.js.map": "/static/js/787.de83771c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.777dc99b.css",
-    "static/js/main.afa3f182.js"
+    "static/css/main.63ec0fc7.css",
+    "static/js/main.6998c144.js"
   ]
 }
