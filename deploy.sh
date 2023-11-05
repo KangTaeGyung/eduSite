@@ -27,8 +27,8 @@ cd $TOMCAT_HOME/webapps
 rm -r ROOT
 rm ROOT.war
 
-# move tomcat_home/webapps
-mv $DEPLOY_HOME/back-edu-s3/build/libs/ROOT.war .
+# copy tomcat_home/webapps
+cp $DEPLOY_HOME/back-edu-s3/build/libs/ROOT.war .
 
 # execute War file : option => -Dspring.profiles.active=prod
 # cd $TOMCAT_HOME/bin
