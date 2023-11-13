@@ -4,8 +4,15 @@
 DROP SEQUENCE SQ_REPLY_QNA;
 CREATE SEQUENCE SQ_REPLY_QNA START WITH 1 INCREMENT BY 1;
 
-DROP TABLE TB_COURSE CASCADE CONSTRAINT;
+DROP SEQUENCE SQ_SECTION;
+CREATE SEQUENCE SQ_SECTION START WITH 1 INCREMENT BY 1;
+
 DROP TABLE TB_CODE CASCADE CONSTRAINT;
+
+DROP TABLE TB_COURSE CASCADE CONSTRAINT;
+DROP TABLE TB_SECTION CASCADE CONSTRAINT;
+DROP TABLE TB_PREVIEW CASCADE CONSTRAINT;
+
 DROP TABLE TB_REPLY_QNA CASCADE CONSTRAINT;
 
 --------------------------------------------------------
@@ -27,6 +34,32 @@ CREATE TABLE TB_COURSE
     INSERT_TIME   VARCHAR2(1000),
     UPDATE_TIME   VARCHAR2(1000),
     DELETE_TIME   VARCHAR2(1000)
+);
+
+--------------------------------------------------------
+-- todo:  DDL for Table TB_SECTION : TB_COURSE 의 자식 테이블
+--------------------------------------------------------
+CREATE TABLE TB_SECTION
+(
+    SNO          NUMBER NOT NULL PRIMARY KEY,
+    UUID          VARCHAR2(1000),         -- FK 코딩으로 참조 무결성 해결( 참조 무결성 생략 ) : TB_COURSE
+    TITLE         VARCHAR2(1000),         -- 제목
+    CONTENT       CLOB,                   -- 블로그 내용
+    DELETE_YN     CHAR(1) DEFAULT 'N',
+    INSERT_TIME   VARCHAR2(1000),
+    UPDATE_TIME   VARCHAR2(1000),
+    DELETE_TIME   VARCHAR2(1000)
+);
+
+--------------------------------------------------------
+-- todo:  DDL for Table TB_SECTION : TB_SECTION 의 자식 테이블
+-- todo: 파일 이력 남기지 않음 : 하드 삭제함
+--------------------------------------------------------
+CREATE TABLE TB_PREVIEW
+(
+    PUUID          VARCHAR2(1000) NOT NULL PRIMARY KEY,
+    FILE_NAME     VARCHAR2(1000),         -- UUID 로 파일명 저장
+    FILE_URL      VARCHAR2(1000)          -- 다운로드 URL
 );
 
 --------------------------------------------------------
